@@ -12,10 +12,10 @@ def ask_gpt():
     data = request.json
     prompt = data.get("prompt", "")
 
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[{"role": "user", "content": prompt}]
-    )
+    response = openai.chat.completions.create(
+    model="gpt-3.5-turbo",
+    messages=[{"role": "user", "content": prompt}]
+)
 
     return jsonify({"response": response["choices"][0]["message"]["content"]})
 
